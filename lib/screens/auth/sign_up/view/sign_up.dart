@@ -5,9 +5,25 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Sign up"),
+    return Scaffold(
+      body: SafeArea(
+        minimum: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Sign in "),
+            const TextField(
+              decoration: InputDecoration(border: OutlineInputBorder()),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const TextField(
+              decoration: InputDecoration(border: OutlineInputBorder()),
+            ),
+            ElevatedButton(onPressed: () {}, child: const Text("Click"))
+          ],
+        ),
       ),
     );
   }
