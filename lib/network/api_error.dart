@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 
-class DioExceptions implements Exception {
+class ApiError implements Exception {
   late String message;
+  ApiError({
+    required this.message,
+  });
 
-  DioExceptions.fromDioError(dynamic dioError) {
+  ApiError.fromDioError(dynamic dioError) {
     if (dioError is DioException) {
       switch (dioError.type) {
         case DioExceptionType.cancel:
@@ -25,11 +29,10 @@ class DioExceptions implements Exception {
           message = "Send timeout in connection with API server";
           break;
         case DioExceptionType.badResponse:
-          if (dioError.message!.contains("SocketException")) {
-            message = 'No Internet';
-            break;
-          }
-          message = "Unexpected error occurred";
+          message = _handleError(
+            dioError.response?.statusCode,
+            dioError.response?.data,
+          );
           break;
         default:
           message = "Something went wrong";
@@ -45,7 +48,7 @@ class DioExceptions implements Exception {
       case 401:
         return 'Unauthorized';
       case 403:
-        return 'Forbidden';
+        return error['detail'];
       case 404:
         return error['message'];
       case 500:
