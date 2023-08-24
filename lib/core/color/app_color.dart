@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_mvvm_test/utils/extension.dart';
 
 class AppColors {
+  static Color primaryColor = HexColor.fromHex("#FF6268AB");
   static Color white = Colors.white;
   static Color lightBlack = Colors.black87;
   static Color fromHex(String hexString) {
