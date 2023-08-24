@@ -9,7 +9,7 @@ class SignInResponse {
   bool? isPublisher;
   bool? isAuthor;
   bool? isOrganizer;
-  DioExceptions? dioExceptions;
+  ApiError? dioExceptions;
   SignInResponse({
     this.fullName,
     this.email,
