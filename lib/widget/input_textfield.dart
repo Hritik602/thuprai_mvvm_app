@@ -16,7 +16,7 @@ class InputTextfield extends StatelessWidget {
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
   final String? hintText;
-  final String Function(String?) validator;
+  final String? Function(String?)? validator;
   final TextInputType? textInputType;
 
   @override

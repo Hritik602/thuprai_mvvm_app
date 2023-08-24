@@ -15,7 +15,7 @@ class PasswordTextField extends StatefulWidget {
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
   final String? hintText;
-  final String Function(String?)? validator;
+  final String? Function(String?)? validator;
 
   @override
   State<PasswordTextField> createState() => _PasswordTextFieldState();
@@ -38,12 +38,6 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           obscureText: _passwordVisibility,
           controller: widget.controller,
           validator: widget.validator,
-          // onChanged: (value) {
-          //   widget.onChanged!(value);
-          // },
-          // onFieldSubmitted: (value) {
-          //   widget.onFieldSubmitted!(value);
-          // },
           decoration: InputDecoration(
               suffixIcon: IconButton(
                 icon: _passwordVisibility
