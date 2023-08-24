@@ -12,7 +12,7 @@ class HomeService {
       );
       return NewBookReleaseModel.fromJson(res.data);
     } catch (e) {
-      return NewBookReleaseModel.withException(e as DioExceptions?);
+      return NewBookReleaseModel.withException(ApiError.fromDioError(e));
     }
   }
 }

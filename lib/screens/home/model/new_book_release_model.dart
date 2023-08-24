@@ -4,7 +4,7 @@ import 'package:thuprai_mvvm_test/network/api_error.dart';
 class NewBookReleaseModel {
   Pagination? pagination;
   List<Result>? results;
-  DioExceptions? dioExceptions;
+  ApiError? dioExceptions;
   NewBookReleaseModel({
     this.pagination,
     this.results,
