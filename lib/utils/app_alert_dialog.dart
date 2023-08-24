@@ -18,24 +18,27 @@ dismissLoadingIndicator() {
   progressDialog?.dismiss();
 }
 
-showSuccessNAlertDialog(BuildContext context) {
-  NDialog(
-    dialogStyle: DialogStyle(titleDivider: true),
-    title: Text("NDialog"),
-    content: Text("This is NDialog's content"),
-    actions: <Widget>[
-      TextButton(child: Text("Okay"), onPressed: () => Navigator.pop(context)),
-      TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context)),
-    ],
-  ).show(context);
-}
-
-showSuccessAlertDialog(BuildContext context, Function()? onConfirmBtnTap) {
+showSuccessAlertDialog(BuildContext context) {
   CoolAlert.show(
     context: context,
+    barrierDismissible: false,
+    type: CoolAlertType.success,
+    text: "",
+    onCancelBtnTap: () {
+      Navigator.pop(context);
+    },
+    onConfirmBtnTap: () {},
+    // autoCloseDuration: const Duration(seconds: 2),
+  );
+}
 
+showErrorAlertDialog(BuildContext context,
+    {Function()? onConfirmBtnTap, String? message}) {
+  CoolAlert.show(
+    context: context,
+    barrierDismissible: false,
     type: CoolAlertType.error,
-    text: 'Transaction completed successfully!',
+    text: message ?? 'Error occurred',
     onCancelBtnTap: () {
       Navigator.pop(context);
     },

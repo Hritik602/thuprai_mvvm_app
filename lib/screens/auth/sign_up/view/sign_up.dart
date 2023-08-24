@@ -107,8 +107,9 @@ class _SignUpState extends State<SignUp> {
       } else {
         dismissLoadingIndicator();
         if (!mounted) return;
-        showSuccessNAlertDialog(context);
-        return;
+        showErrorAlertDialog(context,
+            onConfirmBtnTap: () {},
+            message: _signResponse.dioExceptions?.message);
       }
     }
   }
