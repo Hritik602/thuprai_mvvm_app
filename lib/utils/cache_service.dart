@@ -3,25 +3,33 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CacheService {
   CacheService._();
 
-  static const String tokenKey = "TokenKey";
-  static const String userLoginResponseKey = "LoginResponseKey";
+  static const String _tokenKey = "TokenKey";
+  static const String _userLoginResponseKey = "LoginResponseKey";
+  static const String _isUserLogin = "IsAuthenticate";
   static final CacheService _instance = CacheService._();
   factory CacheService() {
     return _instance;
   }
   static SharedPreferences? pref;
-  static saveToken(String message) async {
+  static saveToken(String token) async {
     pref = await SharedPreferences.getInstance();
-    pref?.setString(tokenKey, message);
+    pref?.setString(_tokenKey, token);
   }
 
-  static getToken(String key) async {
+  static getToken() async {
     pref = await SharedPreferences.getInstance();
-    return pref?.getString(tokenKey);
+    return pref?.getString(_tokenKey);
   }
 
-  // Future<void> saveUserLoginResponse(SignInResponse signInResponse)async{
-  //   pref=await SharedPreferences.getInstance();
-  //   pref?.setString(userLoginResponseKey, )
-  // }
+  static isUserLogin() async {
+    String? token = await getToken();
+    if (token != null && token.isNotEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  static clearAllPrefs() {
+    pref?.clear();
+  }
 }
