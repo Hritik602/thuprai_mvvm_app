@@ -44,6 +44,10 @@ dependencies:
   cool_alert: ^2.0.1
   shared_preferences: ^2.2.0
   flutter_svg: ^2.0.7
+  cached_network_image: ^3.2.3
+  path_provider: ^2.1.0
+  infinite_scroll_pagination: ^4.0.0
+  get_it: ^7.6.0
 
 dev_dependencies:
   flutter_test:
@@ -56,7 +60,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
