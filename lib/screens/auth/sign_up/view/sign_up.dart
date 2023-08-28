@@ -44,7 +44,9 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+      ),
       body: SafeArea(
         minimum: const EdgeInsets.all(20),
         child: Form(
