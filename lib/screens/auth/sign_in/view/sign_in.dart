@@ -41,51 +41,54 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          minimum: const EdgeInsets.all(15),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Sign In"),
-                SizedBox(
-                  height: 0.04.sh,
-                ),
-                InputTextfield(
-                    controller: _emailController,
-                    hintText: ConstantText.emailHintText,
-                    validator: (value) => Validator.validateEmail(value!)),
-                SizedBox(
-                  height: 0.03.sh,
-                ),
-                PasswordTextField(
-                    controller: _passwordController,
-                    hintText: ConstantText.passwordHintText,
-                    validator: (value) => Validator.validatePassword(value!)),
-                SizedBox(
-                  height: 0.03.sh,
-                ),
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: "Don't have an account?\t",
-                      style: TextStyle(color: AppColors.lightBlack)),
-                  TextSpan(
-                      text: "SignUp",
-                      style: TextStyle(color: AppColors.primaryColor),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          _onTapSignUp();
-                        })
-                ]))
-              ],
-            ),
-          )),
-      bottomNavigationBar: PrimaryButton(
-        onTap: _onSignIn,
-        buttonText: "Sign In",
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: Scaffold(
+        body: SafeArea(
+            minimum: const EdgeInsets.all(15),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Sign In"),
+                  SizedBox(
+                    height: 0.04.sh,
+                  ),
+                  InputTextfield(
+                      controller: _emailController,
+                      hintText: ConstantText.emailHintText,
+                      validator: (value) => Validator.validateEmail(value!)),
+                  SizedBox(
+                    height: 0.03.sh,
+                  ),
+                  PasswordTextField(
+                      controller: _passwordController,
+                      hintText: ConstantText.passwordHintText,
+                      validator: (value) => Validator.validatePassword(value!)),
+                  SizedBox(
+                    height: 0.03.sh,
+                  ),
+                  RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: "Don't have an account?\t",
+                        style: TextStyle(color: AppColors.lightBlack)),
+                    TextSpan(
+                        text: "SignUp",
+                        style: TextStyle(color: AppColors.primaryColor),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            _onTapSignUp();
+                          })
+                  ]))
+                ],
+              ),
+            )),
+        bottomNavigationBar: PrimaryButton(
+          onTap: _onSignIn,
+          buttonText: "Sign In",
+        ),
       ),
     );
   }
