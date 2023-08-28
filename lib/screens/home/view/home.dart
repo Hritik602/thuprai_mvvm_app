@@ -1,50 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'package:thuprai_mvvm_test/screens/home/model/new_book_release_model.dart';
 import 'package:thuprai_mvvm_test/screens/home/view_model/home_view_model.dart';
+import 'package:thuprai_mvvm_test/screens/home/widget/book_list_tile.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final PagingController<int, Books> _pagingController =
+      PagingController(firstPageKey: 1);
+
+  @override
+  void initState() {
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => HomeViewModel(),
-      builder: (context, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text("Home Screen"),
-            automaticallyImplyLeading: false,
-          ),
-          body: SafeArea(
-            minimum: const EdgeInsets.all(10),
-            child: FutureBuilder(
-              future: context.read<HomeViewModel>().getAllBooksNewRelease(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<NewBookReleaseModel> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else {
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
-                  } else {
-                    NewBookReleaseModel newBookReleaseModel =
-                        snapshot.data as NewBookReleaseModel;
-                    return ListView.builder(
-                        itemCount: newBookReleaseModel.results?.length,
-                        itemBuilder: (context, index) {
-                          return Text(newBookReleaseModel.results![index].title
-                              .toString());
-                        });
-                  }
-                }
-              },
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Home Screen"),
+        automaticallyImplyLeading: false,
+      ),
+      body: SafeArea(
+          minimum: const EdgeInsets.all(10),
+          child: PagedListView<int, Books>(
+            pagingController: _pagingController,
+            builderDelegate: PagedChildBuilderDelegate<Books>(
+                itemBuilder: (context, item, index) =>
+                    BookListTile(books: item)),
+          )),
     );
+  }
+
+  Future<void> _fetchPage(int pageKey) async {
+    try {
+      NewBookReleaseModel newItems =
+          await context.read<HomeViewModel>().getAllBooksNewRelease(pageKey);
+
+      final isLastPage =
+          newItems.pagination?.pages == newItems.pagination?.page;
+      if (isLastPage) {
+        _pagingController.appendLastPage(newItems.results!);
+      } else {
+        final nextPageKey = pageKey + 1;
+        _pagingController.appendPage(newItems.results!, nextPageKey);
+      }
+    } catch (error) {
+      _pagingController.error = error;
+    }
   }
 }
