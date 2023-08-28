@@ -11,10 +11,10 @@ void main() {
   MockHomeService mockHomeService = MockHomeService();
   test('Test for fetching all new book release  ', () async {
     ///[Arrange]
-    when(mockHomeService.fetchAllNewReleaseBooks())
+    when(mockHomeService.fetchAllNewReleaseBooks(1))
         .thenAnswer((realInvocation) => Future.value(NewBookReleaseModel()));
 
-    final result = mockHomeService.fetchAllNewReleaseBooks();
+    final result = mockHomeService.fetchAllNewReleaseBooks(1);
 
     ///[Act]
     expect(result, isInstanceOf<Future<NewBookReleaseModel>>());
