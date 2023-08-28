@@ -39,6 +39,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           controller: widget.controller,
           validator: widget.validator,
           decoration: InputDecoration(
+              isDense: true,
               suffixIcon: IconButton(
                 icon: _passwordVisibility
                     ? const Icon(Icons.visibility)

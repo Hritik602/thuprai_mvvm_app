@@ -28,6 +28,7 @@ class InputTextfield extends StatelessWidget {
           controller: controller,
           validator: validator,
           decoration: InputDecoration(
+              isDense: true,
               hintText: hintText ?? "",
               hintStyle: Theme.of(context).textTheme.labelSmall,
               border:
