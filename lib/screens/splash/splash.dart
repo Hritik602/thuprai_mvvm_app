@@ -54,7 +54,8 @@ class _SplashScreenState extends State<SplashScreen> {
     if (!isUserLogin) {
       Navigator.pushReplacementNamed(context, AppRoute.signInRoute);
     } else {
-      Navigator.pushReplacementNamed(context, AppRoute.homeRoute);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          AppRoute.homeRoute, (Route<dynamic> route) => false);
     }
   }
 }
