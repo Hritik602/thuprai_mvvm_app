@@ -3,7 +3,7 @@ import 'package:thuprai_mvvm_test/network/api_error.dart';
 
 class NewBookReleaseModel {
   Pagination? pagination;
-  List<Result>? results;
+  List<Books>? results;
   ApiError? dioExceptions;
   NewBookReleaseModel({
     this.pagination,
@@ -14,7 +14,7 @@ class NewBookReleaseModel {
       NewBookReleaseModel(
         pagination: Pagination.fromJson(json["pagination"]),
         results:
-            List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+            List<Books>.from(json["results"].map((x) => Books.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,20 +59,20 @@ class Pagination {
       };
 }
 
-class Result {
+class Books {
   final String? title;
   final String? englishTitle;
   final String? slug;
   final String? frontCover;
 
-  Result({
+  Books({
     this.title,
     this.englishTitle,
     this.slug,
     this.frontCover,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory Books.fromJson(Map<String, dynamic> json) => Books(
         title: json["title"],
         englishTitle: json["english_title"],
         slug: json["slug"],
