@@ -6,7 +6,7 @@ ProgressDialog? progressDialog;
 
 showLoadingIndicator(BuildContext context) {
   progressDialog = ProgressDialog(context,
-      blur: 10,
+      blur: 5,
       dismissable: false,
       title: const Text(""),
       message: const Text("Please wait"),
