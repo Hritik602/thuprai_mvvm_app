@@ -5,13 +5,13 @@ import 'package:thuprai_mvvm_test/screens/home/model/new_book_release_model.dart
 class HomeService {
   static const String apiEndpoints = "book/new-releases/";
 
-  Future<NewBookReleaseModel> fetchAllNewReleaseBooks(int page) async {
+  Future<BookReleaseModel> fetchAllNewReleaseBooks(int page) async {
     try {
       var res = await NetworkCommon.dio
           .get(apiEndpoints, queryParameters: _queryParam(page: page));
-      return NewBookReleaseModel.fromJson(res.data);
+      return BookReleaseModel.fromJson(res.data);
     } catch (e) {
-      return NewBookReleaseModel.withException(ApiError.fromDioError(e));
+      return BookReleaseModel.withException(ApiError.fromDioError(e));
     }
   }
 

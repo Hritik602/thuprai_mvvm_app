@@ -23,7 +23,7 @@ import 'package:thuprai_mvvm_test/screens/home/repository/home_repository.dart'
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeNewBookReleaseModel_0 extends _i1.SmartFake
-    implements _i2.NewBookReleaseModel {
+    implements _i2.BookReleaseModel {
   _FakeNewBookReleaseModel_0(
     Object parent,
     Invocation parentInvocation,
@@ -43,19 +43,19 @@ class MockNewBooksReleaseRepository extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.NewBookReleaseModel> getAllNewBookReleaseList(int? page) =>
+  _i4.Future<_i2.BookReleaseModel> getAllNewBookReleaseList(int? page) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllNewBookReleaseList,
           [page],
         ),
-        returnValue: _i4.Future<_i2.NewBookReleaseModel>.value(
-            _FakeNewBookReleaseModel_0(
+        returnValue:
+            _i4.Future<_i2.BookReleaseModel>.value(_FakeNewBookReleaseModel_0(
           this,
           Invocation.method(
             #getAllNewBookReleaseList,
             [page],
           ),
         )),
-      ) as _i4.Future<_i2.NewBookReleaseModel>);
+      ) as _i4.Future<_i2.BookReleaseModel>);
 }

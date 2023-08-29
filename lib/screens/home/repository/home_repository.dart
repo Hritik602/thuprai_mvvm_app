@@ -6,7 +6,7 @@ class NewBooksReleaseRepository extends HomeRepository {
   final HomeService _homeService = HomeService();
 
   @override
-  Future<NewBookReleaseModel> getAllNewBookReleaseList(int page) async {
+  Future<BookReleaseModel> getAllNewBookReleaseList(int page) async {
     return await _homeService.fetchAllNewReleaseBooks(page);
   }
 }

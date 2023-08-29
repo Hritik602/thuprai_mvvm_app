@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      NewBookReleaseModel newItems =
+      BookReleaseModel newItems =
           await context.read<HomeViewModel>().getAllBooksNewRelease(pageKey);
 
       final isLastPage =

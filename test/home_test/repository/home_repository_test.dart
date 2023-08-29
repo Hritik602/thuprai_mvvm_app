@@ -13,10 +13,10 @@ void main() {
       MockNewBooksReleaseRepository();
   test('Test home Repository method', () async {
     when(mockNewBooksReleaseRepository.getAllNewBookReleaseList(1))
-        .thenAnswer((realInvocation) => Future.value(NewBookReleaseModel()));
+        .thenAnswer((realInvocation) => Future.value(BookReleaseModel()));
 
     final result = mockNewBooksReleaseRepository.getAllNewBookReleaseList(1);
 
-    expect(result, isInstanceOf<Future<NewBookReleaseModel>>());
+    expect(result, isInstanceOf<Future<BookReleaseModel>>());
   });
 }

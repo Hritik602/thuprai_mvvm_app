@@ -24,7 +24,7 @@ import 'package:thuprai_mvvm_test/screens/home/view_model/home_view_model.dart'
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeNewBookReleaseModel_0 extends _i1.SmartFake
-    implements _i2.NewBookReleaseModel {
+    implements _i2.BookReleaseModel {
   _FakeNewBookReleaseModel_0(
     Object parent,
     Invocation parentInvocation,
@@ -48,21 +48,21 @@ class MockHomeViewModel extends _i1.Mock implements _i3.HomeViewModel {
         returnValue: false,
       ) as bool);
   @override
-  _i4.Future<_i2.NewBookReleaseModel> getAllBooksNewRelease(int? page) =>
+  _i4.Future<_i2.BookReleaseModel> getAllBooksNewRelease(int? page) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllBooksNewRelease,
           [page],
         ),
-        returnValue: _i4.Future<_i2.NewBookReleaseModel>.value(
-            _FakeNewBookReleaseModel_0(
+        returnValue:
+            _i4.Future<_i2.BookReleaseModel>.value(_FakeNewBookReleaseModel_0(
           this,
           Invocation.method(
             #getAllBooksNewRelease,
             [page],
           ),
         )),
-      ) as _i4.Future<_i2.NewBookReleaseModel>);
+      ) as _i4.Future<_i2.BookReleaseModel>);
   @override
   void addListener(_i5.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
