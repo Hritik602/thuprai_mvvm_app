@@ -106,7 +106,7 @@ class _SignInState extends State<SignIn> {
           password: _passwordController.text.trim());
       SignInResponse _signInResponse =
           await context.read<AuthViewModel>().signInUser(signInRequest);
-      if (_signInResponse.dioExceptions == null) {
+      if (_signInResponse.apiError == null) {
         dismissLoadingIndicator();
         if (!mounted) return;
         Navigator.pushNamedAndRemoveUntil(
@@ -115,8 +115,7 @@ class _SignInState extends State<SignIn> {
         dismissLoadingIndicator();
         if (!mounted) return;
         showErrorAlertDialog(context,
-            onConfirmBtnTap: () {},
-            message: _signInResponse.dioExceptions?.message);
+            onConfirmBtnTap: () {}, message: _signInResponse.apiError?.message);
       }
     }
   }

@@ -111,15 +111,14 @@ class _SignUpState extends State<SignUp> {
       SignInResponse _signResponse =
           await context.read<AuthViewModel>().signUpUser(signUpRequest);
       dismissLoadingIndicator();
-      if (_signResponse.dioExceptions == null) {
+      if (_signResponse.apiError == null) {
         if (!mounted) return;
         Navigator.pushReplacementNamed(context, AppRoute.homeRoute);
       } else {
         dismissLoadingIndicator();
         if (!mounted) return;
         showErrorAlertDialog(context,
-            onConfirmBtnTap: () {},
-            message: _signResponse.dioExceptions?.message);
+            onConfirmBtnTap: () {}, message: _signResponse.apiError?.message);
       }
     }
   }

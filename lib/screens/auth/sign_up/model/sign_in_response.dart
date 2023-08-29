@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:thuprai_mvvm_test/network/api_error.dart';
 
 class SignInResponse {
@@ -9,7 +8,7 @@ class SignInResponse {
   bool? isPublisher;
   bool? isAuthor;
   bool? isOrganizer;
-  ApiError? dioExceptions;
+  ApiError? apiError;
   SignInResponse({
     this.fullName,
     this.email,
@@ -18,10 +17,10 @@ class SignInResponse {
     this.isPublisher,
     this.isAuthor,
     this.isOrganizer,
-    this.dioExceptions,
+    this.apiError,
   });
 
-  SignInResponse.withDioException(this.dioExceptions);
+  SignInResponse.withDioException(this.apiError);
 
   factory SignInResponse.fromJson(Map<String, dynamic> json) => SignInResponse(
         fullName: json["full_name"],
