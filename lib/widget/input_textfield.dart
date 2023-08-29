@@ -22,7 +22,6 @@ class InputTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 0.06.sh,
       child: TextFormField(
           keyboardType: textInputType ?? TextInputType.text,
           controller: controller,
