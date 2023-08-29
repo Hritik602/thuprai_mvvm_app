@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     getUserLoginStatus();
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 3), () {
       _navigation();
     });
   }
