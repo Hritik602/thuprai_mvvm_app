@@ -17,7 +17,7 @@ void main() {
   SignInRequest signInRequest =
       SignInRequest(email: "test50@gmail.com", password: "password");
   SignInResponse signInResponse = SignInResponse(email: "test50@gmail.com");
-  test('Test for create user ', () async {
+  test('should return signInResponse call signUpUser method  ', () async {
 //arrange
     when(authSignUpService.signUpUser(signUpRequest))
         .thenAnswer((_) => Future.value(SignInResponse()));
