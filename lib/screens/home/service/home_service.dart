@@ -1,6 +1,6 @@
 import 'package:thuprai_mvvm_test/network/api_error.dart';
 import 'package:thuprai_mvvm_test/network/network_common.dart';
-import 'package:thuprai_mvvm_test/screens/home/model/new_book_release_model.dart';
+import 'package:thuprai_mvvm_test/screens/home/model/book_release_model.dart';
 
 class HomeService {
   static const String apiEndpoints = "book/new-releases/";
