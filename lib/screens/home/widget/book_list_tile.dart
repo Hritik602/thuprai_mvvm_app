@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:thuprai_mvvm_test/screens/home/model/new_book_release_model.dart';
+import 'package:thuprai_mvvm_test/screens/home/model/book_release_model.dart';
 
 class BookListTile extends StatefulWidget {
   const BookListTile({super.key, this.books});

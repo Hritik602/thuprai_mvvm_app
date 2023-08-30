@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:thuprai_mvvm_test/screens/home/model/new_book_release_model.dart';
+import 'package:thuprai_mvvm_test/screens/home/model/book_release_model.dart';
 import 'package:thuprai_mvvm_test/screens/home/service/home_service.dart';
 
 import 'home_service_test.mocks.dart';

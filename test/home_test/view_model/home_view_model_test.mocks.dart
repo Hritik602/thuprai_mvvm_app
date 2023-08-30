@@ -7,7 +7,7 @@ import 'dart:async' as _i4;
 import 'dart:ui' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:thuprai_mvvm_test/screens/home/model/new_book_release_model.dart'
+import 'package:thuprai_mvvm_test/screens/home/model/book_release_model.dart'
     as _i2;
 import 'package:thuprai_mvvm_test/screens/home/view_model/home_view_model.dart'
     as _i3;
